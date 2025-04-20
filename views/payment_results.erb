@@ -7,7 +7,7 @@
     APR
   </dt>
   <dd>
-    <%= @apr_num %>
+    <%= @apr_num.to_fs(:currency) %>
   </dd>
 
   <dt>
@@ -21,14 +21,14 @@
     Principal
   </dt
   <dd>
-    <%= @present_value %>
+    <%= @present_value.to_fs(:currency) %>
   </dd>
 
 <dt>
     Payment
   </dt
   <dd>
-    <%= @the_result %>
+    <%= @the_result.to_fs(:currency) %>
   </dd>
 </dl>
 
