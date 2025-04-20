@@ -21,6 +21,30 @@ get("/square_root/results") do
   erb(:square_root_results)
 end
 
+get("/random/new") do
+  erb(:random_calc)
+end
+
+get("/random/results") do
+  @min_num = params.fetch("user_min").to_f
+  @max_num = params.fetch("user_max").to_f
+  @the_result = rand(@min_num..@max_num).to_f
+  erb(:random_results)
+end
+
+get("/payment/new") do
+  erb(:payment_calc)
+end
+
+get("payment/results") do
+  @apr_num = ((params.fetch("user_apr").to_f)/100)/12
+  @loan_term = params.fetch("user_years").to_f * 12
+  @present_value = params.fetch("user_pv").to_f
+  @numerator = @apr_num * @present_value
+  @denominator = 1 - ((1+@apr_num) ** (@loan_term * -1))
+  @the_result = @numerator / @denominator
+  erb(:payment_results)
+
 get("/") do
   "
   <h1>Welcome to your Sinatra App!</h1>
