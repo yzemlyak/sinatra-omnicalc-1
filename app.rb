@@ -36,7 +36,7 @@ get("/payment/new") do
   erb(:payment_calc)
 end
 
-get("payment/results") do
+get("/payment/results") do
   @apr_num = ((params.fetch("user_apr").to_f)/100)/12
   @loan_term = params.fetch("user_years").to_f * 12
   @present_value = params.fetch("user_pv").to_f
@@ -44,6 +44,7 @@ get("payment/results") do
   @denominator = 1 - ((1+@apr_num) ** (@loan_term * -1))
   @the_result = @numerator / @denominator
   erb(:payment_results)
+end
 
 get("/") do
   "
